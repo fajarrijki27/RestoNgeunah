@@ -10,7 +10,9 @@ class Detail_order extends Model
     protected $fillable = [
         'id_order',
         'id_masakan',
+        'qty',
         'keterangan',
+        'total_bayar',
         'status_detail_order',
     ];
 

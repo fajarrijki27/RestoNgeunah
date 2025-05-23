@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Tables;
 use App\Models\Masakan;
 use Filament\Forms\Form;
@@ -11,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\MasakanResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -27,14 +29,26 @@ class MasakanResource extends Resource
     {
         return $form
             ->schema([
+                FileUpload::make('img')
+                    ->label('Gambar Masakan')
+                    ->required()
+                    ->columnSpan(2),
+
                 TextInput::make('nama_masakan')
                     ->required()
                     ->label('Nama Masakan'),
 
                 TextInput::make('harga')
                     ->required()
+                    ->required()
                     ->label('Harga')
                     ->numeric(),
+
+                Textarea::make('deskripsi_masakan')
+                    ->label('Deskripsi Masakan')
+                    ->required()
+                    ->autosize()
+                    ->columnSpan(2),
 
                 Select::make('status_masakan')
                     ->options([

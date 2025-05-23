@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('code_transaksi');
             $table->string('no_meja');
             $table->dateTime('tanggal');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->string('nama_pengunjung');
             $table->string('keterangan');
             $table->enum('status_order', ['pending', 'proses', 'selesai'])->default('pending');
             $table->timestamps();

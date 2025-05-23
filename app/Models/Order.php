@@ -8,17 +8,13 @@ class Order extends Model
 {
     protected $table = 'orders';
     protected $fillable = [
+        'code_transaksi',
         'no_meja',
         'tanggal',
-        'id_user',
+        'nama_pengunjung',
         'keterangan',
         'status_order',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function detailOrders()
     {

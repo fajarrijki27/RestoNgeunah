@@ -24,11 +24,6 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function level()
-    {
-        return $this->belongsTo(Level::class);
-    }
-
     public function orders()
     {
         return $this->hasMany(Order::class);

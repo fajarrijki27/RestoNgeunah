@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('id_order');
             $table->foreign('id_order')->references('id')->on('orders')->onDelete('cascade');
+            $table->string('code_order');
             $table->dateTime('tanggal');
             $table->decimal('total_bayar', 15, 2);
             $table->timestamps();
