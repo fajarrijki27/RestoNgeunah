@@ -1,0 +1,13 @@
+.btn-coklat {
+    background-color: var(--accent-color); /* Coklat tua seperti warna kayu */
+    color: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border: none;
+}
+
+.btn-coklat:hover { /* Coklat sedikit lebih terang saat hover */
+    background-color: color-mix(in srgb, var(--accent-color), transparent 25%);
+}

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('qty');
             $table->string('keterangan');
             $table->decimal('total_bayar', 10,2);
-            $table->enum('status_detail_order', ['pending', 'proses', 'selesai'])->default('pending');
             $table->timestamps();
         });
     }

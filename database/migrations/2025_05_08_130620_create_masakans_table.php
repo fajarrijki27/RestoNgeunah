@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('img');
             $table->string('nama_masakan');
-            $table->string('deskripsi_masakan');
             $table->decimal('harga', 10, 2);
-            $table->enum('status_masakan', ['tersedia', 'habis'])->default('tersedia');
-            $table->enum('kategori_masakan', ['minuman', 'makanan'])->default('makanan');
+            $table->enum('status_masakan', ['Tersedia', 'Habis'])->default('Tersedia');
+            $table->enum('kategori_masakan', ['Minuman', 'Makanan'])->default('Makanan');
             $table->timestamps();
         });
     }

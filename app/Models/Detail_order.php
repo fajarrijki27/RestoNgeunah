@@ -13,7 +13,6 @@ class Detail_order extends Model
         'qty',
         'keterangan',
         'total_bayar',
-        'status_detail_order',
     ];
 
     public function order()

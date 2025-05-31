@@ -10,7 +10,6 @@ class Masakan extends Model
     protected $fillable = [
         'img',
         'nama_masakan',
-        'deskripsi_masakan',
         'harga',
         'status_masakan',
         'kategori_masakan',

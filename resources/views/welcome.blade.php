@@ -27,6 +27,7 @@
 
     <!-- Main CSS File -->
     <link href="{{ asset('templates/assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('templates/assets/css/style.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
@@ -56,12 +57,14 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#menu">Menu</a></li>
                     <li><a href="#chefs">Chefs</a></li>
-                    <li><a href="#book-a-table">Order</a></li>
+                    <li><a href="#book-a-table">Book a Table</a></li>
                     <li><a href="#events">Events</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
+
+            <a class="btn-getstarted d-none d-sm-block" href="#book-a-table"><i class="bi bi-cart-check"></i></a>
         </div>
     </header>
 
@@ -300,9 +303,13 @@
                                     <div class="menu-content">
                                         <h5>{{ $masakan->nama_masakan }}<span
                                                 class="menu-tag">{{ $masakan->status_masakan }}</span></h5>
-                                        <p>{{ $masakan->deskripsi_masakan }}</p>
+                                        {{-- <p>{{ $masakan->deskripsi_masakan }}</p> --}}
                                         <div class="price">Rp {{ number_format($masakan->harga, 2, ',', '.') }}</div>
                                     </div>
+                                    <!-- Tombol Pesan dengan warna coklat -->
+                                    <button class="btn btn-coklat mt-2 d-flex align-items-center gap-2">
+                                        <i class="bi bi-cart-plus"></i> Pesan
+                                    </button>
                                 </div>
                             </div>
                         @endforeach
@@ -592,14 +599,16 @@
 
         </section><!-- /Chefs Section -->
 
-        <!-- Order Section -->
+        <!-- Book A Table Section -->
         <section id="book-a-table" class="book-a-table section">
+
             <div class="container" data-aos="fade-up" data-aos-delay="100">
+
                 <div class="row gy-5 mb-5">
                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
                         <div class="reservation-info">
                             <div class="text-content">
-                                <h3>Order</h3>
+                                <h3>Book Your Table</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
                                     ullamcorper mattis, pulvinar dapibus leo. Aliquam erat volutpat.</p>
 
@@ -644,50 +653,49 @@
 
                 <div class="row">
                     <div class="col-12" data-aos="fade-up" data-aos-delay="400">
-                        <div class="reservation-form-wrapper position-relative">
-                            <div class="cart-icon position-absolute">
-                                <i class="bi bi-cart"></i>
-                            </div>
+                        <div class="reservation-form-wrapper">
                             <div class="form-header">
-                                <h3>Order</h3>
+                                <h3>Book A Table</h3>
                                 <p>Please fill the form below to make a reservation</p>
                             </div>
 
                             <form action="forms/book-a-table.php" method="post" role="form"
                                 class="php-email-form mt-4">
                                 <div class="row gy-4">
-                                    <div class="col-lg-12 form-group">
+                                    <div class="col-lg-4 form-group">
                                         <input type="text" name="name" class="form-control"
-                                            placeholder="Masukan Nama" required="">
+                                            placeholder="Your Name" required="">
                                     </div>
                                     <div class="col-lg-4 form-group">
-                                        <select name="masakan" class="form-select" required="">
-                                            <option value="">Pilih Menu</option>
-                                            @foreach ($masakans as $masakan)
-                                                <option value="{{ $masakan->id }}">{{ $masakan->nama_masakan }}
-                                                </option>
-                                            @endforeach
+                                        <input type="email" class="form-control" name="email"
+                                            placeholder="Your Email" required="">
+                                    </div>
+                                    <div class="col-lg-4 form-group">
+                                        <input type="text" class="form-control" name="phone"
+                                            placeholder="Your Phone" required="">
+                                    </div>
+                                    <div class="col-lg-4 form-group">
+                                        <select name="people" class="form-select" required="">
+                                            <option value="">Number of guests</option>
+                                            <option value="1">1 Person</option>
+                                            <option value="2">2 People</option>
+                                            <option value="3">3 People</option>
+                                            <option value="4">4 People</option>
+                                            <option value="5">5 People</option>
+                                            <option value="6">6+ People</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-4 form-group">
-                                        <select name="meja" class="form-select" required="">
-                                            <option value="">Pilih Meja</option>
-                                            <option value="1">Meja 1 </option>
-                                            <option value="2">Meja 2 </option>
-                                            <option value="3">Meja 3 </option>
-                                            <option value="4">Meja 4 </option>
-                                            <option value="5">Meja 5 </option>
-                                            <option value="6">Meja 6 </option>
-                                            <option value="7">Meja 7 </option>
-                                        </select>
+                                        <input type="date" name="date" class="form-control" placeholder="Date"
+                                            required="">
                                     </div>
                                     <div class="col-lg-4 form-group">
-                                        <input type="text" name="name" class="form-control"
-                                            placeholder="Banyak Beli (QTY)" required="">
+                                        <input type="time" class="form-control" name="time" id="time"
+                                            placeholder="Time" required="">
                                     </div>
 
                                     <div class="form-group mt-4">
-                                        <textarea class="form-control" name="keterangan" rows="3" placeholder="Special Requests (Optional)"></textarea>
+                                        <textarea class="form-control" name="message" rows="3" placeholder="Special Requests (Optional)"></textarea>
                                     </div>
                                 </div>
 
@@ -699,14 +707,16 @@
                                 </div>
 
                                 <div class="text-center mt-4">
-                                    <button type="submit" class="btn-book-table">add to cart</button>
+                                    <button type="submit" class="btn-book-table">Book Now</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </section><!-- /Order Section -->
+
+        </section><!-- /Book A Table Section -->
 
         <!-- Location Section -->
         <section id="location" class="location section">

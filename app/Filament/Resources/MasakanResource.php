@@ -44,12 +44,6 @@ class MasakanResource extends Resource
                     ->label('Harga')
                     ->numeric(),
 
-                Textarea::make('deskripsi_masakan')
-                    ->label('Deskripsi Masakan')
-                    ->required()
-                    ->autosize()
-                    ->columnSpan(2),
-
                 Select::make('status_masakan')
                     ->options([
                         'tersedia' => 'Tersedia',
